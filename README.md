@@ -1,12 +1,12 @@
 # TrOCR Small Handwritten - CoreML
 
-This repository contains a **CoreML conversion** of Microsoft's [microsoft/trocr-small-handwritten](https://huggingface.co/microsoft/trocr-small-handwritten) model for **Apple Silicon** devices. The model performs **optical character recognition (OCR)** on **single text-line handwritten images**.
+This repository contains a CoreML conversion of Microsoft's [microsoft/trocr-small-handwritten](https://huggingface.co/microsoft/trocr-small-handwritten) model for **Apple Silicon** devices. The model performs **optical character recognition (OCR)** on single text-line handwritten images.
 
 ## Model Description
 
-This is a **CoreML conversion** of the original **TrOCR model** introduced in [TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models](https://arxiv.org/abs/2109.10282) by Li et al. The original model is an **encoder-decoder Transformer architecture**, which has been converted to run optimally on **Apple Silicon** devices.
+This is a **CoreML conversion** of the original **TrOCR model** introduced in [TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models](https://arxiv.org/abs/2109.10282) by Li et al. The original model is an **encoder-decoder Transformer architecture**, which has been converted to run optimally on Apple Silicon devices.
 
-**Original model**: [microsoft/trocr-small-handwritten](https://huggingface.co/microsoft/trocr-small-handwritten)
+Original model: [microsoft/trocr-small-handwritten](https://huggingface.co/microsoft/trocr-small-handwritten)
 
 ## Conversion Details
 
@@ -27,18 +27,18 @@ The model has been optimized for **Apple Silicon Neural Engine**. Performance me
 
 ## Installation
 
-1. **Clone this repository**:
+1. Clone this repository:
 ```bash
-git clone [repository-url]
-cd trocr-small-handwritten
+git clone https://github.com/ajmcclary/trocr-small-handwritten-coreml.git
+cd trocr-small-handwritten-coreml
 ```
 
-2. **Run the setup and conversion script**:
+2. Run the setup and conversion script:
 ```bash
 ./setup_and_convert.sh
 ```
 
-**This will**:
+This will:
 - Create a Python virtual environment
 - Install required dependencies
 - Download the TrOCR model
@@ -49,13 +49,13 @@ cd trocr-small-handwritten
 
 ### Testing the Conversion
 
-The repository includes a **test script** that downloads a sample handwritten text image and runs inference:
+The repository includes a test script that downloads a sample handwritten text image and runs inference:
 
 ```bash
 python test_conversion.py
 ```
 
-**Example output**:
+Example output:
 ```
 Prediction Results:
 --------------------------------------------------
@@ -105,38 +105,38 @@ let tokenIds = output.featureValue(for: "var_5238")!.multiArrayValue!
 ## Model Details
 
 The converted model includes the following optimizations:
-- **Input**: RGB images (automatically resized to 384x384 pixels)
-- **Pixel normalization**: Values scaled to [0, 1]
-- **Maximum sequence length**: 20 tokens
-- **Temperature scaling**: 0.3 for focused sampling
-- **Token-level repetition penalty**: Enabled
-- **Pattern-based repetition detection**: 3-token window
-- **Neural Engine optimization**: Optimized for Apple Silicon
+- Input: RGB images (automatically resized to 384x384 pixels)
+- Pixel normalization: Values scaled to [0, 1]
+- Maximum sequence length: 20 tokens
+- Temperature scaling (0.3) for focused sampling
+- Token-level repetition penalty
+- Pattern-based repetition detection (3-token window)
+- Neural Engine optimization for Apple Silicon
 
 ## Limitations
 
-- **Maximum text length**: ~20 words
-- **Handwriting complexity**: May struggle with very complex styles
-- **OS requirement**: macOS 13 or later
-- **Performance**: Best on Apple Silicon Macs using Neural Engine
-- **Text scope**: Single text line recognition only (not suitable for paragraphs)
-- **Input requirements**: Images should be pre-cropped to contain only the text line
-- **Text orientation**: No support for rotated or severely skewed text
+- Maximum text length of ~20 words
+- May struggle with very complex handwriting
+- Requires macOS 13 or later
+- Best performance on Apple Silicon Macs using Neural Engine
+- Single text line recognition only (not suitable for paragraphs)
+- Input images should be pre-cropped to contain only the text line
+- No support for rotated or severely skewed text
 
 ## Preprocessing Requirements
 
-1. **Input images must be**:
-   - **Format**: RGB
-   - **Content**: Single line of text
-   - **Alignment**: Reasonably horizontal
-   - **Contrast**: Good separation between text and background
-   - **Size**: Will be automatically resized to 384x384 pixels
+1. Input images must be:
+   - RGB format
+   - Single line of text
+   - Reasonably horizontal alignment
+   - Good contrast between text and background
+   - Will be automatically resized to 384x384 pixels
 
-2. **For best results**:
-   - **Cropping**: Tight around the text line
-   - **Lighting**: Good illumination and contrast
-   - **Background**: Minimal noise and patterns
-   - **Orientation**: Avoid severe rotation or skewing
+2. For best results:
+   - Crop images tightly around the text line
+   - Ensure good lighting and contrast
+   - Minimize background noise/patterns
+   - Avoid severe rotation or skewing
 
 ## License
 
@@ -144,7 +144,7 @@ This model conversion is released under the **MIT license**, following the origi
 
 ## Attribution
 
-This is a **CoreML conversion** of the [microsoft/trocr-small-handwritten](https://huggingface.co/microsoft/trocr-small-handwritten) model created by Microsoft. Please cite the original work when using this model:
+This is a CoreML conversion of the [microsoft/trocr-small-handwritten](https://huggingface.co/microsoft/trocr-small-handwritten) model created by Microsoft. Please cite the original work when using this model:
 
 ```bibtex
 @misc{li2021trocr,
@@ -159,4 +159,4 @@ This is a **CoreML conversion** of the [microsoft/trocr-small-handwritten](https
 
 ## Support
 
-For issues specific to the **CoreML conversion**, please open an issue in this repository. For issues related to the **original model**, please refer to the [original repository](https://github.com/microsoft/unilm/tree/master/trocr).
+For issues specific to the CoreML conversion, please open an issue in this repository. For issues related to the original model, please refer to the [original repository](https://github.com/microsoft/unilm/tree/master/trocr).
